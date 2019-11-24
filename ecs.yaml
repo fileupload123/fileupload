@@ -1,0 +1,11 @@
+parameters:
+    sets:
+        - psr12
+        - clean-code
+    file_extensions:
+        - 'php'
+    exclude_files:
+        - src/Kernel.php
+services:
+    SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff: ~
+
