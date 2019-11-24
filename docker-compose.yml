@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+    php:
+        build: ${SYMFONY_PROJECT_PATH}/docker/php #replace $SYMFONY_PROJECT_PATH in .env file 
+        volumes:
+            - ${SYMFONY_PROJECT_PATH}:/var/www/html 
+
+    nginx:
+        image: nginx:alpine
+        depends_on:
+            - php
+        ports:
+            - 80:80
+        volumes:
+            - ${SYMFONY_PROJECT_PATH}/logs/nginx/:/var/log/nginx
+            - ${SYMFONY_PROJECT_PATH}/public:/var/www/html/public
+            - ${SYMFONY_PROJECT_PATH}/docker/nginx:/etc/nginx/conf.d
